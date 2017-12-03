@@ -1,4 +1,4 @@
-#Mala aplikacija nastala zarad svrhe vezbanja, osnovne matematicke operacije primenjene na celim brojevima
+#Mala gui aplikacija nastala zarad  u svrhe vezbanja paterna, osnovne matematicke operacije primenjene nad celim brojevima
 
 
- *najveci akcenta je na obradi dogadjaja i malo igranje sa grafickim okruzenjemi grafickim komponentama
+ *najveci akcenta je na obradi dogadjaja i malo vezbanje sa grafickim okruzenjemi grafickim komponentama
