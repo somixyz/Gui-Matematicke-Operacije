@@ -26,7 +26,7 @@ public class FMatematickaOperacija extends javax.swing.JFrame {
         postaviOsluskiva();
         postaviModel();
         setBounds(new java.awt.Rectangle(200, 200, 500, 400));
-
+        
     }
 
     /**
