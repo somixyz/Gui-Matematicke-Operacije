@@ -11,12 +11,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
  * @author acer e1
  */
-public class FMatematickaOperacija extends javax.swing.JFrame {
+public class FMatematickaOperacija extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form FMatematickaOperacija
@@ -259,4 +260,24 @@ public class FMatematickaOperacija extends javax.swing.JFrame {
         new ModelOperacija(jComboBoxMatOperacija);
     }
 
+     @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if(source instanceof JButton){         
+            int a = Integer.parseInt(jTextFieldX.getText().trim());
+            int b = Integer.parseInt(jTextFieldY.getText().trim());
+            JButton button = (JButton)source;
+            if(button.getText().equalsIgnoreCase("Saberi")){
+                jTextFieldRez.setText((a + b) + "");
+            }else{
+                jTextFieldRez.setText((a - b) + "");
+            }
+        }      
+    }
+
+    
+//    private void postaviOsluskiva(){
+//    jButtonSaberi.addActionListener(this);
+//    jButtonOduzmi.addActionListener(this);
+//    }
 }
