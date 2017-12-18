@@ -5,6 +5,7 @@
  */
 package gui.vezbanje;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,7 +18,7 @@ import javax.swing.JButton;
  *
  * @author acer e1
  */
-public class FMatematickaOperacija extends javax.swing.JFrame implements ActionListener{
+public class FMatematickaOperacija extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form FMatematickaOperacija
@@ -26,8 +27,9 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
         initComponents();
         postaviOsluskiva();
         postaviModel();
-        setBounds(new java.awt.Rectangle(200, 200, 500, 400));
-        
+        postaviOkvir();
+//        setBounds(new java.awt.Rectangle(200, 200, 500, 400));
+
     }
 
     /**
@@ -157,12 +159,12 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                 int x = Integer.parseInt(jTextFieldX.getText().trim());
-                int y = Integer.parseInt(jTextFieldY.getText().trim());
-                jTextFieldRez.setText(String.valueOf(x + y));
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    int x = Integer.parseInt(jTextFieldX.getText().trim());
+                    int y = Integer.parseInt(jTextFieldY.getText().trim());
+                    jTextFieldRez.setText(String.valueOf(x + y));
                     Thread trd = new Thread() {
-                        public void run() { 
+                        public void run() {
                             jLabelKeyPressed.setText(" desio se dogadjaj, pritisnuli ste enter ");
                             try {
                                 Thread.sleep(3000);
@@ -171,8 +173,8 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
                                 Logger.getLogger(FMatematickaOperacija.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
-                    }; 
-                trd.start();
+                    };
+                    trd.start();
                 }
             }
 
@@ -216,42 +218,42 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
             int y1 = Integer.parseInt(jTextFieldY.getText().trim());
             jTextFieldRez.setText(String.valueOf(x1 - y1));
         });
-        
+
         jButtonAkcija.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x = Integer.parseInt(jTextFieldX.getText().trim());
                 int y = Integer.parseInt(jTextFieldY.getText().trim());
-                switch( jComboBoxMatOperacija.getSelectedItem().toString()){
-                    case "+" :
-                        jTextFieldRez.setText(saberi(x,y));
+                switch (jComboBoxMatOperacija.getSelectedItem().toString()) {
+                    case "+":
+                        jTextFieldRez.setText(saberi(x, y));
                         break;
-                    case "-" : 
-                        jTextFieldRez.setText(oduzmi(x,y));
+                    case "-":
+                        jTextFieldRez.setText(oduzmi(x, y));
                         break;
-                    case "*" : 
-                        jTextFieldRez.setText(pomnozi(x,y));
+                    case "*":
+                        jTextFieldRez.setText(pomnozi(x, y));
                         break;
-                    case "/" :
-                        jTextFieldRez.setText(podeli(x,y));
+                    case "/":
+                        jTextFieldRez.setText(podeli(x, y));
                         break;
                 }
             }
 
             private String saberi(int x, int y) {
-                return String.valueOf(x+y);
-               }
+                return String.valueOf(x + y);
+            }
 
             private String oduzmi(int x, int y) {
-                return String.valueOf(x-y);
+                return String.valueOf(x - y);
             }
 
             private String pomnozi(int x, int y) {
-                return String.valueOf(x*y);
+                return String.valueOf(x * y);
             }
 
             private String podeli(int x, int y) {
-                return String.valueOf(x/y);
+                return String.valueOf(x / y);
             }
         });
     }
@@ -260,22 +262,31 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
         new ModelOperacija(jComboBoxMatOperacija);
     }
 
-     @Override
+    @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source instanceof JButton){         
+        if (source instanceof JButton) {
             int a = Integer.parseInt(jTextFieldX.getText().trim());
             int b = Integer.parseInt(jTextFieldY.getText().trim());
-            JButton button = (JButton)source;
-            if(button.getText().equalsIgnoreCase("Saberi")){
+            JButton button = (JButton) source;
+            if (button.getText().equalsIgnoreCase("Saberi")) {
                 jTextFieldRez.setText((a + b) + "");
-            }else{
+            } else {
                 jTextFieldRez.setText((a - b) + "");
             }
-        }      
+        }
     }
 
-    
+    void postaviOkvir() {
+        setSize(400, 300);
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        int width = (int) toolkit.getScreenSize().getWidth();
+        int height = (int) toolkit.getScreenSize().getHeight();
+//        setSize(width, height);
+        int x = (width - getWidth()) / 2;
+        int y = (height - getHeight()) / 2;
+        setBounds(x, y, getWidth(), getHeight());
+    }
 //    private void postaviOsluskiva(){
 //    jButtonSaberi.addActionListener(this);
 //    jButtonOduzmi.addActionListener(this);
