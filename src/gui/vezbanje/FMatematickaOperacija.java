@@ -25,7 +25,7 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
      */
     public FMatematickaOperacija() {
         initComponents();
-        postaviOsluskiva();
+        postaviOsluskivac();
         postaviModel();
         postaviOkvir();
 //        setBounds(new java.awt.Rectangle(200, 200, 500, 400));
@@ -203,7 +203,7 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
     private javax.swing.JTextField jTextFieldX;
     private javax.swing.JTextField jTextFieldY;
     // End of variables declaration//GEN-END:variables
-    private void postaviOsluskiva() {
+    private void postaviOsluskivac() {
         jButtonSaberi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -258,6 +258,9 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
         });
     }
 
+    /**
+     * Metoda koja postavlja JComboBoxoperacije
+     */
     private void postaviModel() {
         new ModelOperacija(jComboBoxMatOperacija);
     }
@@ -276,7 +279,14 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
             }
         }
     }
+    //    private void postaviOsluskivac(){
+//    jButtonSaberi.addActionListener(this);
+//    jButtonOduzmi.addActionListener(this);
+//    }
 
+    /**
+     * Metoda koja podesava GUI na sredinu ekrana
+     */
     void postaviOkvir() {
         setSize(400, 300);
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -287,8 +297,5 @@ public class FMatematickaOperacija extends javax.swing.JFrame implements ActionL
         int y = (height - getHeight()) / 2;
         setBounds(x, y, getWidth(), getHeight());
     }
-//    private void postaviOsluskiva(){
-//    jButtonSaberi.addActionListener(this);
-//    jButtonOduzmi.addActionListener(this);
-//    }
+
 }
